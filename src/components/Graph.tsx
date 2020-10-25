@@ -38,9 +38,9 @@ export const Graph: React.FC<Props> = ({ data }) => {
             .domain(d3.extent(data, (d) => d.time))
             .range([0, width]);
 
-        svg.append("g")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x));
+        // svg.append("g")
+        //     .attr("transform", "translate(0," + height + ")")
+        //     .call(d3.axisBottom(x));
 
         // Max value observed:
         const max = d3.max(data, (d) => +d.value + 10)
@@ -49,8 +49,8 @@ export const Graph: React.FC<Props> = ({ data }) => {
         var y = d3.scaleLinear()
             .domain([50, max])
             .range([height, 0]);
-        svg.append("g")
-            .call(d3.axisLeft(y));
+        // svg.append("g")
+        //     .call(d3.axisLeft(y));
 
         // Set the gradient
         svg.append("linearGradient")
@@ -74,7 +74,7 @@ export const Graph: React.FC<Props> = ({ data }) => {
             .datum(data)
             .attr("fill", "none")
             .attr("stroke", "url(#line-gradient)")
-            .attr("stroke-width", 2)
+            .attr("stroke-width", 15)
             .attr("d", d3.line()
                 .x((d) => x(d.time))
                 .y((d) => y(d.value))
